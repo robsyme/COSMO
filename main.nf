@@ -34,6 +34,7 @@ log.info "Sample attribute will be used: $params.cli_attribute \n"
 
 process PREPROCESS {
     label 'process_low'
+    cache 'lenient'
 
     input:
     path d1_file

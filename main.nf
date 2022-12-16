@@ -26,12 +26,9 @@ if (params.help) {
     exit 0
 }
 
-checkPathParamList = [params.d1_file, params.d2_file, params.cli_file]
-for (param in checkPathParamList) { if (param) { file(param, checkIfExists: true) } }
-
-if (params.d1_file) { d1_file     = file(params.d1_file)  } else { exit 1, 'No file specified with --d1_file'  }
-if (params.d1_file) { d2_file     = file(params.d2_file)  } else { exit 1, 'No file specified with --d2_file'  }
-if (params.d1_file) { sample_file = file(params.cli_file) } else { exit 1, 'No file specified with --cli_file' }
+d1_file     = file(params.d1_file, checkIfExists: true)
+d2_file     = file(params.d2_file, checkIfExists: true)
+sample_file = file(params.cli_file, checkIfExists: true)
 
 log.info "Sample attribute will be used: $params.cli_attribute \n"
 
